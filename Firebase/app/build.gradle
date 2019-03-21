@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+  compileSdkVersion compileSdkVer
+  
+
+  defaultConfig {
+    applicationId "github.nisrulz.firebase"
+    minSdkVersion minSdkVer
+    targetSdkVersion targetSdkVer
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  packagingOptions {
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/LICENSE-FIREBASE.txt'
+    exclude 'META-INF/NOTICE'
+  }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    
+    // Testing-only dependencies
+    testImplementation "junit:junit:$junitVer"
+    androidTestImplementation "com.android.support.test:runner:$androidTestRunnerVer"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoCoreVer"
+
+
+  implementation "com.android.support:appcompat-v7:$supportLibVer"
+  implementation "com.android.support:design:$supportLibVer"
+  
+  implementation "com.google.firebase:firebase-core:$googlePlayServicesVer"
+  implementation "com.google.firebase:firebase-database:$googlePlayServicesVer"
+}
+
+
+// Add to the bottom of the file
+apply plugin: 'com.google.gms.google-services'
